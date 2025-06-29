@@ -6,11 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function tryFetchNav(paths, index = 0) {
         if (index >= paths.length) {
             console.error('Could not load navigation from any path, using fallback');
-            // Show fallback navigation
-            const fallbackNav = document.getElementById('fallback-nav');
-            if (fallbackNav) {
-                fallbackNav.style.display = 'block';
-            }
+            // Fallback navigation is already visible, so do nothing
             return;
         }
         
@@ -24,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 const navbar = document.getElementById('navbar');
                 if (navbar) {
+                    // Hide fallback navigation and replace with fetched nav
+                    const fallbackNav = document.getElementById('fallback-nav');
+                    if (fallbackNav) {
+                        fallbackNav.style.display = 'none';
+                    }
                     navbar.innerHTML = data;
                 }
             })
