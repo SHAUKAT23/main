@@ -16,23 +16,6 @@ function toggleMenu() {
     }
 }
 
-// CV Modal Functions
-function openCVModal() {
-    const modal = document.getElementById('cvModal');
-    const frame = document.getElementById('cvFrame');
-    frame.src = './shaukat_cv.pdf';
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeCVModal() {
-    const modal = document.getElementById('cvModal');
-    const frame = document.getElementById('cvFrame');
-    modal.style.display = 'none';
-    frame.src = '';
-    document.body.style.overflow = '';
-}
-
 // Contact Modal Functions
 function openContactModal() {
     const modal = document.getElementById('contactModal');
@@ -44,6 +27,43 @@ function closeContactModal() {
     const modal = document.getElementById('contactModal');
     modal.style.display = 'none';
     document.body.style.overflow = '';
+}
+
+// CV Viewer Modal Functions
+function openCVViewModal() {
+    console.log('Opening CV modal...');
+    const modal = document.getElementById('cvViewModal');
+    const frame = document.getElementById('cvViewFrame');
+    
+    if (!modal) {
+        console.error('CV modal not found!');
+        return;
+    }
+    
+    // Try to load PDF directly first, then fallback to Google Docs viewer
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    
+    if (isLocalhost) {
+        // For local testing, just show the PDF directly
+        frame.src = './shaukat_cv.pdf';
+    } else {
+        // For GitHub Pages or other hosting
+        frame.src = 'https://docs.google.com/gview?url=https://shaukat23.github.io/main/shaukat_cv.pdf&embedded=true';
+    }
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    console.log('CV modal opened, modal display:', modal.style.display);
+}
+
+function closeCVViewModal() {
+    console.log('Closing CV modal...');
+    const modal = document.getElementById('cvViewModal');
+    const frame = document.getElementById('cvViewFrame');
+    modal.style.display = 'none';
+    frame.src = '';
+    document.body.style.overflow = '';
+    console.log('CV modal closed');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -60,37 +80,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Close modal when clicking outside
-    const cvModal = document.getElementById('cvModal');
-    if (cvModal) {
-        cvModal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeCVModal();
-            }
-        });
-    }
-
-    // Open CV modal and load PDF
-    const cvViewBtn = document.querySelector('.cv-view-btn');
-    if (cvViewBtn) {
-        cvViewBtn.addEventListener('click', function (event) {
-            event.preventDefault();
-            const cvModal = document.getElementById('cvModal');
-            const cvFrame = document.getElementById('cvFrame');
-            const pdfUrl = this.getAttribute('href');
-
-            cvFrame.src = pdfUrl;
-            cvModal.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        });
-    }
-
     // Close contact modal when clicking outside
     const contactModal = document.getElementById('contactModal');
     if (contactModal) {
         contactModal.addEventListener('click', function(e) {
             if (e.target === this) {
                 closeContactModal();
+            }
+        });
+    }
+
+    // Close CV viewer modal when clicking outside
+    const cvViewModal = document.getElementById('cvViewModal');
+    if (cvViewModal) {
+        cvViewModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCVViewModal();
             }
         });
     }

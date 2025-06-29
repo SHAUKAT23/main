@@ -395,8 +395,8 @@
     border-radius: 23px;
   }
 
-  /* CV Themed Viewer */
-  .cv-viewer-modal {
+  /* CV Viewer Modal */
+  .cv-view-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -411,57 +411,64 @@
     padding: 2rem;
   }
 
-  .cv-viewer-container {
+  .cv-view-modal-content {
     width: 90%;
     max-width: 900px;
-    height: 90%;
+    height: 85%;
     background: rgba(10, 10, 30, 0.9);
     border-radius: 20px;
     border: 2px solid rgba(139, 0, 255, 0.3);
-    box-shadow: 0 20px 50px rgba(139, 0, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(139, 0, 255, 0.1);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
   }
 
-  .cv-viewer-header {
-    padding: 1.5rem 2rem;
-    background: linear-gradient(135deg, #8B00FF, #9370db);
-    color: white;
+  .cv-view-modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1.5rem 2rem;
+    background: rgba(139, 0, 255, 0.1);
+    border-bottom: 1px solid rgba(139, 0, 255, 0.2);
+    flex-shrink: 0;
   }
 
-  .cv-viewer-header h3 {
+  .cv-view-modal-header h3 {
+    color: #8b00ff;
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
-  .cv-close-btn {
+  .cv-view-close-btn {
     background: none;
     border: none;
-    color: white;
+    color: #8b00ff;
     font-size: 1.5rem;
     cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
     transition: all 0.3s ease;
   }
 
-  .cv-close-btn:hover {
+  .cv-view-close-btn:hover {
+    background: rgba(139, 0, 255, 0.2);
     transform: rotate(90deg);
-    opacity: 0.8;
   }
 
-  .cv-viewer-content {
+  .cv-view-modal-body {
     flex: 1;
+    padding: 0;
+    position: relative;
     overflow: hidden;
   }
 
-  .cv-viewer-content iframe {
+  .cv-view-modal-body iframe {
     width: 100%;
     height: 100%;
     border: none;
     background: white;
+    border-radius: 0 0 18px 18px;
   }
 
   /* Contact Modal */
@@ -623,6 +630,36 @@
     .content h1 {
       font-size: 2.5rem;
     }
+
+    /* Mobile responsiveness for modals */
+    .contact-modal,
+    .cv-view-modal {
+      padding: 1rem;
+    }
+
+    .contact-modal-content {
+      width: 95%;
+      max-width: none;
+    }
+
+    .cv-view-modal-content {
+      width: 98%;
+      height: 90%;
+    }
+
+    .contact-modal-header,
+    .cv-view-modal-header {
+      padding: 1rem 1.5rem;
+    }
+
+    .contact-modal-header h3,
+    .cv-view-modal-header h3 {
+      font-size: 1.2rem;
+    }
+
+    .contact-modal-body {
+      padding: 1.5rem;
+    }
   }
 
   @media (max-width: 480px) {
@@ -655,6 +692,15 @@
     .background-elements::after {
       width: 200px;
       height: 200px;
+    }
+
+    .cv-view-modal-content {
+      height: 85%;
+    }
+    
+    .contact-modal-header h3,
+    .cv-view-modal-header h3 {
+      font-size: 1.1rem;
     }
   }
 
