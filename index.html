@@ -15,13 +15,13 @@
         <nav>
             <div class="nav-logo">Shaukat Aziz</div>
             <div class="nav-links">
-                <a href="index.html">Home</a>
+                <a href="#home">Home</a>
                 <a href="tabs/research.html">Research</a>
                 <a href="tabs/projects.html">Projects</a>
                 <a href="tabs/blog.html">Blog</a>
                 <a href="shaukat_cv.pdf" target="_blank">CV</a>
             </div>
-            <button class="nav-contact">Contact</button>
+            <button class="nav-contact" onclick="openContactModal()">Contact</button>
         </nav>
     </div>
     <div class="background-elements"></div>
@@ -160,10 +160,37 @@
             <p>Download my complete academic CV to learn more about my educational background, research experience, and achievements.</p>
             <div class="cv-actions">
                 <a href="./shaukat_cv.pdf" class="cv-download-btn" download>Download PDF</a>
-                <a href="./shaukat_cv.pdf" class="cv-view-btn" target="_blank" rel="noopener">View Online</a>
+                <a href="https://docs.google.com/gview?url=https://shaukat23.github.io/main/shaukat_cv.pdf&embedded=true" class="cv-view-btn" target="_blank" rel="noopener">View Online</a>
             </div>
         </div>
     </section>
+
+    <!-- Contact Modal -->
+    <div class="contact-modal" id="contactModal">
+        <div class="contact-modal-content">
+            <div class="contact-modal-header">
+                <h3>Contact Me</h3>
+                <button class="contact-close-btn" onclick="closeContactModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="contact-modal-body">
+                <p>Get in touch for research collaborations, academic discussions, or any inquiries.</p>
+                
+                <div class="contact-options">
+                    <a href="mailto:shaukataziz2022@gmail.com" class="contact-option">
+                        <i class="fas fa-envelope"></i>
+                        <span>shaukataziz2022@gmail.com</span>
+                    </a>
+                    
+                    <a href="tel:+917708531490" class="contact-option">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 7708531490</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- CV Viewer Modal -->
     <div class="cv-viewer-modal" id="cvModal">

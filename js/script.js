@@ -33,6 +33,19 @@ function closeCVModal() {
     document.body.style.overflow = '';
 }
 
+// Contact Modal Functions
+function openContactModal() {
+    const modal = document.getElementById('contactModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeContactModal() {
+    const modal = document.getElementById('contactModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Close menu when clicking outside
     document.addEventListener('click', function (event) {
@@ -69,6 +82,16 @@ document.addEventListener('DOMContentLoaded', function () {
             cvFrame.src = pdfUrl;
             cvModal.classList.add('open');
             document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // Close contact modal when clicking outside
+    const contactModal = document.getElementById('contactModal');
+    if (contactModal) {
+        contactModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactModal();
+            }
         });
     }
 });
