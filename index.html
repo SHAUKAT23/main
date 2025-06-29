@@ -11,7 +11,20 @@
 </head>
 
 <body>
-    <div id="navbar"></div>
+    <div id="navbar">
+        <!-- Fallback navigation in case JS fails -->
+        <nav style="display:none;" id="fallback-nav">
+            <div class="nav-logo">Shaukat Aziz</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="tabs/research.html">Research</a>
+                <a href="tabs/projects.html">Projects</a>
+                <a href="tabs/blog.html">Blog</a>
+                <a href="shaukat_cv.pdf" target="_blank">CV</a>
+            </div>
+            <button class="nav-contact">Contact</button>
+        </nav>
+    </div>
     <div class="background-elements"></div>
     <nav style="display:none"></nav> <!-- nav is now loaded dynamically -->
     <div class="container" id="home">
