@@ -99,4 +99,23 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-});
+
+    // Re-add Fade-in animation for elements on scroll
+    const fadeInImages = document.querySelectorAll('.js-fade-in-image');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Stop observing once it's visible
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when 10% of the element is visible
+    });
+
+    fadeInImages.forEach(image => {
+        observer.observe(image);
+    });
+
+}); // Close the DOMContentLoaded listener

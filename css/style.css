@@ -948,3 +948,35 @@
       justify-content: center;
     }
   }
+
+  .js-fade-in-image {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.js-fade-in-image.is-visible {
+    opacity: 1;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+.home-profile-image {
+    width: 180px; /* Keep the width */
+    height: 180px; /* Set height equal to width for circular shape */
+    border-radius: 50%; /* Make it round */
+    object-fit: cover; /* Crop the image to fit the circular container */
+    object-position: center -18px; /* Adjust vertical position within the frame */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 20px; /* Add some space below the image */
+    animation: float 3s ease-in-out infinite; /* Add the floating animation */
+}
+
+.home-profile-image:hover {
+    transform: scale(1.05); /* Only scale on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
