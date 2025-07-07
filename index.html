@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
     <div id="navbar">
         <nav>
-            <div class="nav-logo">
-                <img src="https://via.placeholder.com/40x40" alt="Website Logo" class="website-logo">
-                Shaukat Aziz
-            </div>
+            <div class="nav-logo">Shaukat Aziz</div>
+            
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="tabs/research.html">Research</a>
@@ -80,6 +79,16 @@
             </div>
         </div>
     </div>
+
+    <!-- XKCD Section -->
+    <section id="xkcd" class="section">
+        <div class="section-container">
+            <div class="section-header xkcd-header">
+                <h2>Latest XKCD Comic</h2>
+                <button class="xkcd-view-btn" onclick="openXKCDModal()">View Comic</button>
+            </div>
+        </div>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="section">
@@ -231,6 +240,22 @@
             </div>
             <div class="cv-view-modal-body">
                 <iframe id="cvViewFrame" src="" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- XKCD Modal -->
+    <div class="xkcd-modal" id="xkcdModal">
+        <div class="xkcd-modal-content">
+            <div class="xkcd-modal-header">
+                <h3 id="xkcdModalTitle">XKCD Comic</h3>
+                <button class="xkcd-close-btn" onclick="closeXKCDModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="xkcd-modal-body">
+                <img id="xkcdModalImg" src="" alt="" />
+                <p id="xkcdModalAlt"></p>
             </div>
         </div>
     </div>

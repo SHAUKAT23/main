@@ -66,6 +66,33 @@ function closeCVViewModal() {
     console.log('CV modal closed');
 }
 
+// XKCD Modal Functions
+let latestXkcd = null;
+
+function openXKCDModal() {
+    if (!latestXkcd) {
+        console.error('XKCD data not loaded yet.');
+        return;
+    }
+    const modal = document.getElementById('xkcdModal');
+    const modalImg = document.getElementById('xkcdModalImg');
+    const modalTitle = document.getElementById('xkcdModalTitle');
+    const modalAlt = document.getElementById('xkcdModalAlt');
+
+    modalImg.src = latestXkcd.img;
+    modalAlt.textContent = latestXkcd.altText || latestXkcd.alt;
+    modalTitle.textContent = `XKCD #${latestXkcd.num}: ${latestXkcd.title}`;
+
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeXKCDModal() {
+    const modal = document.getElementById('xkcdModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Close menu when clicking outside
     document.addEventListener('click', function (event) {
@@ -100,6 +127,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Ensure modal closes when clicking outside
+    const xkcdModal = document.getElementById('xkcdModal');
+    if (xkcdModal) {
+        xkcdModal.addEventListener('click', e => {
+            if (e.target === xkcdModal) closeXKCDModal();
+        });
+    }
+
     // Re-add Fade-in animation for elements on scroll
     const fadeInImages = document.querySelectorAll('.js-fade-in-image');
 
@@ -118,4 +153,14 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(image);
     });
 
+    // Fetch and store latest XKCD comic using aqendo parser feed
+    fetch('https://aqendo.github.io/xkcd-parser/parsed.json')
+        .then(response => response.json())
+        .then(jsonData => {
+            const comics = Array.isArray(jsonData) ? jsonData : [jsonData];
+            // Pick a random comic each time
+            const randomIndex = Math.floor(Math.random() * comics.length);
+            latestXkcd = comics[randomIndex];
+        })
+        .catch(error => console.error('Error fetching XKCD via parser feed:', error));
 }); // Close the DOMContentLoaded listener

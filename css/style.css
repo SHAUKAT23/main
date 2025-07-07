@@ -6,7 +6,7 @@
 
   html, body {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #0a0a1a, #121236);
     color: #fff;
@@ -979,4 +979,127 @@
 .home-profile-image:hover {
     transform: scale(1.05); /* Only scale on hover */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* XKCD Widget */
+.xkcd-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgba(139, 0, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(139, 0, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(139, 0, 255, 0.2);
+}
+
+.xkcd-widget img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid rgba(139, 0, 255, 0.3);
+  box-shadow: 0 5px 15px rgba(139, 0, 255, 0.3);
+}
+
+.xkcd-widget p {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* XKCD Modal */
+.xkcd-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10,10,30,0.95);
+  backdrop-filter: blur(15px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 1000;
+}
+
+.xkcd-modal-content {
+  width: 90%;
+  max-width: 800px;
+  background: rgba(10,10,30,0.9);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.xkcd-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(139,0,255,0.1);
+  border-bottom: 1px solid rgba(139,0,255,0.2);
+}
+
+.xkcd-modal-header h3 {
+  color: #8B00FF;
+  margin: 0;
+}
+
+.xkcd-close-btn {
+  background: none;
+  border: none;
+  color: #8B00FF;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.xkcd-modal-body {
+  padding: 1rem;
+  text-align: center;
+}
+
+.xkcd-modal-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.xkcd-modal-body p {
+  color: #e0e0e0;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* XKCD Section Header */
+.xkcd-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.xkcd-header h2 {
+  margin: 0;
+}
+
+.xkcd-view-btn {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #8B00FF;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+.xkcd-view-btn:hover {
+  background: #8B00FF;
+  color: #121236;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 0, 255, 0.6);
 }
